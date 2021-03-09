@@ -1,5 +1,7 @@
 package application;
 
+import java.time.format.DateTimeFormatter; // added this 3/8/21
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -64,10 +66,9 @@ public class Controller {
     		String newEmployee = name.getText();
     		RadioButton selectedDeptButton = (RadioButton) dept.getSelectedToggle();
     		String newDept = selectedDeptButton.getText(); 
-    		//Date date = new Date("2/25/2012");//new Date((String) datePicked); // can't do dateHired yet bc 
-    		Date date = new Date(datePicked.getValue().toString());
-    		
-    		//messageArea.setText(newDept);
+    		String getDate = datePicked.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+		Date date = new Date(getDate);
+
     		Profile prof = new Profile();
     		prof.setName(newEmployee);
     		prof.setDept(newDept);
@@ -78,7 +79,7 @@ public class Controller {
     		
     		if (newEmpType.equals("Parttime")) {
     			//int wage = Integer.parseInt(hourlyRate.getText());
-    			Parttime parttimer = new Parttime(prof, 0, 0, 0); // get hourly rate!!!
+    			Parttime parttimer = new Parttime(prof, 0, 0, 0); 
     			parttimer.setHourlyRate(Integer.parseInt(hourlyRate.getText())); // causes an error if left blank
     			if (company.add(parttimer) == true) {
     				messageArea.setText("Employee added." + parttimer.toString()); // remove toString(), using it rn just to check
@@ -132,8 +133,13 @@ public class Controller {
     }
 
     @FXML
-    void checkDateHired(ActionEvent event) {
-
+    void checkDateHired(ActionEvent event) { // kind of works rn?
+	String getDate = datePicked.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+	Date date = new Date(getDate);
+	boolean dateValid = date.isValid();
+	if (dateValid == false) {
+		messageArea.setText("Invalid Date!");
+	}
     }
 
     @FXML
@@ -150,7 +156,7 @@ public class Controller {
 
     @FXML
     void checkHoursWorked(ActionEvent event) {
-
+	// need to do this
     }
 
     @FXML
@@ -162,9 +168,10 @@ public class Controller {
     void removeEmployee(ActionEvent event) {
         // need to add something for empty employee database
     	String newEmployee = name.getText();
-		RadioButton selectedDeptButton = (RadioButton) dept.getSelectedToggle();
-		String newDept = selectedDeptButton.getText(); 
-		Date date = new Date(datePicked.getValue().toString()); // figure out date
+	RadioButton selectedDeptButton = (RadioButton) dept.getSelectedToggle();
+	String newDept = selectedDeptButton.getText(); 
+	String getDate = datePicked.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+	Date date = new Date(getDate);
 		
     	Profile prof = new Profile();
 	prof.setName(newEmployee);
@@ -183,11 +190,12 @@ public class Controller {
 
     @FXML
     void setHours(ActionEvent event) {
-	int hours = Integer.parseInt(hourlyRate.getText());
+	//int hours = Integer.parseInt(hoursWorked.getText());
     	String newEmployee = name.getText();
 	RadioButton selectedDeptButton = (RadioButton) dept.getSelectedToggle();
 	String newDept = selectedDeptButton.getText(); 
-	Date date = new Date(datePicked.getValue().toString());
+	String getDate = datePicked.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+	Date date = new Date(getDate);
     	
     	// add something if employee database is empty
     	// check if everything is valid (date, hours)
@@ -197,7 +205,7 @@ public class Controller {
 	prof.setDateHired(date);
 		
 	Parttime parttimer = new Parttime(prof, 0, 0, 0);
-	parttimer.setHoursWorked(hours);
+	parttimer.setHoursWorked(Integer.parseInt(hoursWorked.getText()));
 		
 	if (company.setHours(parttimer) == true) {
 		messageArea.setText("Working hours set.");
