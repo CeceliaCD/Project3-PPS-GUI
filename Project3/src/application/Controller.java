@@ -99,6 +99,18 @@ public class Controller {
     			}
     		}
     		// need to add management + check if everything is valid
+		if (newEmpType.equals("Management")) {
+    			RadioButton selectedRole = (RadioButton) managerialRole.getSelectedToggle();
+    			String role = selectedRole.getText();
+    			Management manager = new Management(prof, 0, 0, role); // right now the constructor takes an int for the role, should we change that?
+    			if (company.add(manager) == true) {
+    				messageArea.setText("Employee added." + manager.toString()); // remove toString
+    			}
+    			else {
+    				messageArea.setText("Employee is already on the list.");
+    			}
+    			
+    		}
    
     	}
     	catch(NullPointerException e) {
@@ -142,8 +154,8 @@ public class Controller {
     }
 
     @FXML
-    void clearMessageArea(ActionEvent event) {
-
+    void clearMessageArea(ActionEvent event) { // clear only message area or everything?
+	messageArea.setText("");
     }
 
     @FXML
@@ -155,14 +167,43 @@ public class Controller {
 		Date date = new Date(datePicked.getValue().toString()); // figure out date
 		
     	Profile prof = new Profile();
-		prof.setName(newEmployee);
-		prof.setDept(newDept);
-		prof.setDateHired(date);
+	prof.setName(newEmployee);
+	prof.setDept(newDept);
+	prof.setDateHired(date);
+	
+	Employee emp = new Employee(prof, 0);
+		
+	if (company.remove(emp) == true) {
+		messageArea.setText("Employee removed.");
+	}
+	else {
+		messageArea.setText("Employee does not exist.");
+	}
     }
 
     @FXML
     void setHours(ActionEvent event) {
-
+	int hours = Integer.parseInt(hourlyRate.getText());
+    	String newEmployee = name.getText();
+	RadioButton selectedDeptButton = (RadioButton) dept.getSelectedToggle();
+	String newDept = selectedDeptButton.getText(); 
+	Date date = new Date(datePicked.getValue().toString());
+    	
+    	// add something if employee database is empty
+    	// check if everything is valid (date, hours)
+    	Profile prof = new Profile();
+    	prof.setName(newEmployee);
+	prof.setDept(newDept);
+	prof.setDateHired(date);
+		
+	Parttime parttimer = new Parttime(prof, 0, 0, 0);
+	parttimer.setHoursWorked(hours);
+		
+	if (company.setHours(parttimer) == true) {
+		messageArea.setText("Working hours set.");
+	} else {
+		messageArea.setText("Employee does not exist.");
+	}
     }
 
 }
