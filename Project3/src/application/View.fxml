@@ -48,7 +48,7 @@
                               <RadioButton mnemonicParsing="false" text="ECE" toggleGroup="$dept" translateX="130.0" GridPane.rowIndex="1" />
                               <RadioButton mnemonicParsing="false" text="IT" toggleGroup="$dept" translateX="190.0" GridPane.rowIndex="1" />
                               <Label text="Date Hired: " GridPane.rowIndex="2" />
-                              <DatePicker onAction="#checkDateHired" translateX="70.0" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="datePicked" onAction="#checkDateHired" translateX="70.0" GridPane.rowIndex="2" />
                               <Label text="Employment Type:" GridPane.columnIndex="1" />
                               <Label text="Annual Salary: " GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="annualSalary" onAction="#checkAnnualSalary" scaleX="0.5" translateX="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
