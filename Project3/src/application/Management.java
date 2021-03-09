@@ -16,7 +16,7 @@ compensations are different.
 public class Management extends Fulltime {
 	
 	private double bonus; //whatever amount the user gives in for the respective role's bonus
-	private int role; //whatever value the user gives for the role
+	private String role; //whatever value the user gives for the role; CHANGED FROM INT TO STRING
 	private int manager = 1;
 	private int deptHead = 2;
 	private int director = 3;
@@ -29,7 +29,7 @@ public class Management extends Fulltime {
 	@param annSalary is an employee's annual salary
 	@param theRole is an employee's managerial role
 	*/
-	public Management(Profile eProfile, double thePay, double annSalary, int theRole) {
+	public Management(Profile eProfile, double thePay, double annSalary, String theRole) { // CHANGED int theRole TO STRING
 		// TODO Auto-generated constructor stub
 		super(eProfile, thePay, annSalary);
 		this.role = theRole;
@@ -45,11 +45,12 @@ public class Management extends Fulltime {
 		double deptheadcomp = 9500.00; //2 aditional compensation annually
 		double directorcomp = 12000.00; //3 additional compensation annually
 		
-		if(role == manager) {
+		// CHANGED THIS TO FIT STRING
+		if(role.equals("Manager")) { // role == MANAGER
 			bonus = managercomp/totalPayPeriods;
-		}else if(role == deptHead) {
+		}else if(role.equals("Department Head")) { // role == DEPTHEAD
 			bonus = deptheadcomp/totalPayPeriods;
-		}else if(role == director) {
+		}else if(role.equals("Director")) { //role == DIRECTOR
 			bonus = directorcomp/totalPayPeriods;
 		}
 		return bonus;
@@ -67,7 +68,7 @@ public class Management extends Fulltime {
 	Getter method to obtain an employee's integer representation of their managerial role.
 	@return the integer value of manager (1), department head (2), or director (3)
 	*/
-	public int getRole() { 
+	public String getRole() { // CHANGED FROM int getRole() TO STRING
 		return role;
 	}
 	
@@ -75,7 +76,7 @@ public class Management extends Fulltime {
 	Setter method to set the role for an employee entering the company.
 	@param theRole is the integer value of the role that will be given to an employee of managerial status
 	*/
-	public void setRole(int theRole) {
+	public void setRole(String theRole) { // CHANGED FROM int theRole TO STRING
 		this.role = theRole;
 	}
 	
@@ -88,18 +89,19 @@ public class Management extends Fulltime {
 		double annSalary = super.getAnnualSalary();
 		int totalPayPeriods = super.getFTPayPeriods();
 		int payCounter = 0;
-	
-		if(role == manager) {
+		
+		// CHANGED TO FIT STRING
+		if(role.equals("Manager")) { // role == MANAGER
 			if(payCounter != totalPayPeriods) { //too ensure we cannot have more than 26 pay periods in year
 				thePay = (annSalary/ totalPayPeriods) + getBonus(); 
 				payCounter++;	
 			}
-		}else if(role == deptHead) {
+		}else if(role.equals("Department Head")) { // role == DEPTHEAD
 			if(payCounter != totalPayPeriods) {
 				thePay = (annSalary/ totalPayPeriods) + getBonus(); 
 				payCounter++;
 			}
-		}else if(role == director){
+		}else if(role.equals("Director")){ //role == DIRECTOR
 			if(payCounter != totalPayPeriods) {
 				thePay = (annSalary/ totalPayPeriods) + getBonus();
 				payCounter++;		
@@ -116,11 +118,12 @@ public class Management extends Fulltime {
 	@Override
 	public String toString() { 
 		String roleOutput = "";
-		if(getRole() == manager) {
+		// CHANGED TO FIT STRING
+		if(getRole().equals("Manager")) { // getRole() == MANAGER
 			roleOutput = super.toString() + "::Manager Compensation " + getTheBonus(); 
-		}else if(getRole() == deptHead) {
+		}else if(getRole().equals("Department Head")) { // getRole() == DEPTHEAD
 			roleOutput = super.toString() + "::DepartmentHead Compensation " + getTheBonus();
-		}else if(getRole() == director) {
+		}else if(getRole().equals("Director")) { // getRole() == DIRECTOR
 			roleOutput = super.toString() + "::Director Compensation " + getTheBonus();
 		}
 		return roleOutput;
