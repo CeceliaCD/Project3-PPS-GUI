@@ -143,16 +143,16 @@ public class Company {
  	This method is invoked to print the current state of the employee list.
 	*/
 	public String print() { //print earning statements for all employees
-		String database = "";
+		StringBuilder builder = new StringBuilder();
 		if(numEmployee != 0) {
 			for(int i=0; i < emplist.length; i++) 
 			{
 				if (emplist[i] != null) //to ensure no null elements are printed
 				{  
-					database += emplist[i].toString() + "\n";
+					builder.append(emplist[i].toString() + "\n");
 				}
 			}
-			return database;
+			return builder.toString();
 		}
 		return "Employee database is empty.\n";
 	} 
