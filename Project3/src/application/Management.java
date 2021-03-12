@@ -45,11 +45,11 @@ public class Management extends Fulltime {
 		double deptheadcomp = 9500.00; //2 aditional compensation annually
 		double directorcomp = 12000.00; //3 additional compensation annually
 		
-		if(role == manager) {
+		if(role.equals(manager)) {
 			bonus = managercomp/totalPayPeriods;
-		}else if(role == deptHead) {
+		}else if(role.equals(deptHead)) {
 			bonus = deptheadcomp/totalPayPeriods;
-		}else if(role == director) {
+		}else if(role.equals(director)) {
 			bonus = directorcomp/totalPayPeriods;
 		}
 		return bonus;
@@ -89,17 +89,17 @@ public class Management extends Fulltime {
 		int totalPayPeriods = super.getFTPayPeriods();
 		int payCounter = 0;
 	
-		if(role == manager) {
+		if(role.equals(manager)) {
 			if(payCounter != totalPayPeriods) { //too ensure we cannot have more than 26 pay periods in year
 				thePay = (annSalary/ totalPayPeriods) + getBonus(); 
 				payCounter++;	
 			}
-		}else if(role == deptHead) {
+		}else if(role.equals(deptHead)) {
 			if(payCounter != totalPayPeriods) {
 				thePay = (annSalary/ totalPayPeriods) + getBonus(); 
 				payCounter++;
 			}
-		}else if(role == director){
+		}else if(role.equals(director)){
 			if(payCounter != totalPayPeriods) {
 				thePay = (annSalary/ totalPayPeriods) + getBonus();
 				payCounter++;		
@@ -116,11 +116,11 @@ public class Management extends Fulltime {
 	@Override
 	public String toString() { 
 		String roleOutput = "";
-		if(getRole() == manager) {
+		if(getRole().equals(manager)) {
 			roleOutput = super.toString() + "::Manager Compensation " + getTheBonus(); 
-		}else if(getRole() == deptHead) {
+		}else if(getRole().equals(deptHead)) {
 			roleOutput = super.toString() + "::DepartmentHead Compensation " + getTheBonus();
-		}else if(getRole() == director) {
+		}else if(getRole().equals(director)) {
 			roleOutput = super.toString() + "::Director Compensation " + getTheBonus();
 		}
 		return roleOutput;
