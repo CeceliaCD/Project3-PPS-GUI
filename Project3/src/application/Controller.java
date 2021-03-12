@@ -102,76 +102,90 @@ public class Controller {
     		
     	if (groupValue.equals("Parttime")) {
     		Parttime parttimer = new Parttime(inputtedEmpProfile(event), 0, 0, 0);
-    		if(parttimer.getempProfile() == null) {
-    			return;
-    		}
-    		try {
-    			parttimer.setHourlyRate(Double.parseDouble(hourlyRate.getText()));
-    		}
-    		catch(Exception ex) {
-    			return;
-    		}
-    		finally {	
-    			if(checkHourlyRate(hourlyRate) == false) {
-    				messageArea.appendText("Pay rate cannot be negative.\n");
-    			}else if(checkHourlyRate(hourlyRate) == true) {
-    				company.add(parttimer);
-            		numEmp++;
-            		messageArea.appendText("Employee added.\n");
-            	}else {
-        	    	messageArea.appendText("Employee is already on the list.\n");
-        	    }	
-    		}
+			if (parttimer.getempProfile() == null) {
+				return;
+			}
+			try {
+				parttimer.setHourlyRate(Double.parseDouble(hourlyRate.getText()));
+			} catch (Exception ex) {
+				messageArea.appendText("Please enter an hourly rate.\n");// return;
+			} finally {
+				// if (checkHourlyRate(hourlyRate) == false) {
+				// messageArea.appendText("Pay rate cannot be negative.\n");
+				// } else
+				if (checkHourlyRate(hourlyRate) == true) {
+					if (company.add(parttimer) == true) { // ;
+						numEmp++;
+						messageArea.appendText("Employee added.\n");
+					} else {
+						messageArea.appendText("Employee is already on the list.\n");
+					}
+					// } else {
+
+				}
+			}
     	}
     		
     	if (groupValue.equals("Fulltime")) {
     		Fulltime fulltimer = new Fulltime(inputtedEmpProfile(event), 0, 0);
-    		if(fulltimer.getempProfile() == null) {
-    			return;
-    		}
-    		try { 
-    			fulltimer.setAnnualSalary(Double.parseDouble(annualSalary.getText()));
-    		}
-    		catch(Exception ex) {
-    			return;
-    		}
-    		finally {
-    			if(checkAnnualSalary(annualSalary) == false) {
-    				messageArea.appendText("Salary cannot be negative.\n");
-    			}else if(checkAnnualSalary(annualSalary) == true) {
-    				company.add(fulltimer);
-            		numEmp++;
-            		messageArea.appendText("Employee added.\n");
-            	}else {
-        	    	messageArea.appendText("Employee is already on the list.\n");
-        	    }
-    		}
-    	}
+			if (fulltimer.getempProfile() == null) {
+				return;
+			}
+			try {
+				fulltimer.setAnnualSalary(Double.parseDouble(annualSalary.getText()));
+			} catch (Exception ex) {
+				// return;
+				messageArea.appendText("Please enter in the salary.\n");
+			} finally {
+				// if (checkAnnualSalary(annualSalary) == false) {
+				// messageArea.appendText("Salary cannot be negative.\n");
+				// } else
+				if (checkAnnualSalary(annualSalary) == true) {
+					if (company.add(fulltimer)) { // ;
+						numEmp++;
+						messageArea.appendText("Employee added.\n");
+					} else {
+						messageArea.appendText("Employee is already on the list.\n");
+					}
+					// } else {
+
+				}
+			}
+		}
     		
     	if (groupValue.equals("Management")) {
     		RadioButton selectedRole = (RadioButton) managerialRole.getSelectedToggle();
-    		String role = selectedRole.getText();
-    		Management manager = new Management(inputtedEmpProfile(event), 0, 0, role); // changed roles to type String in Management
-    		if(manager.getempProfile() == null) {
-    			return;
-    		}
-    		try {
-    			manager.setAnnualSalary(Double.parseDouble(annualSalary.getText()));
-    		}
-    		catch(Exception ex) {
-    			return;
-    		}
-    		finally {
-    			if(checkAnnualSalary(annualSalary) == false) {
-    				messageArea.appendText("Salary cannot be negative.\n");
-    			}else if(checkAnnualSalary(annualSalary) == true) {
-    				company.add(manager);
-            		numEmp++;
-        	    	messageArea.appendText("Employee added.\n");
-        	    }else {
-        	    	messageArea.appendText("Employee is already on the list.\n");
-        	    }
-    		}
+			if (selectedRole == null) {
+				messageArea.appendText("Please select a managerial role.\n");
+			} else {
+				String role = selectedRole.getText();
+				Management manager = new Management(inputtedEmpProfile(event), 0, 0, role); // changed roles to type
+																							// String
+																							// in Management
+				if (manager.getempProfile() == null) {
+					return;
+				}
+				try {
+					manager.setAnnualSalary(Double.parseDouble(annualSalary.getText()));
+				} catch (Exception ex) {
+					messageArea.appendText("Please enter in the salary.\n");
+				} finally {
+					// if (checkAnnualSalary(annualSalary) == false) {
+					// messageArea.appendText("Salary cannot be negative.\n");
+					// } else
+					if (checkAnnualSalary(annualSalary) == true) {
+						if (company.add(manager) == true) { // ;
+							numEmp++;
+							messageArea.appendText("Employee added.\n");
+						} else {
+							messageArea.appendText("Employee is already on the list.\n");
+						}
+						// } else {
+						// messageArea.appendText("Employee is already on the list.\n");
+						// }
+					}
+				}
+			}
     	}
     }
 
@@ -188,19 +202,33 @@ public class Controller {
     }
 
     private boolean checkAnnualSalary(TextField annualSalary) {
-    	double salary = Double.parseDouble(annualSalary.getText());
-    	if (salary < 0) {
-    		return false;
-    	}
-    	return true;
+    	// if (annualSalary == null) {
+		// return false;
+		// }
+		// else {
+		try {
+			double salary = Double.parseDouble(annualSalary.getText());
+			if (salary < 0) {
+				messageArea.appendText("Salary cannot be negative.");
+				return false;
+			}
+		} catch (Exception ex) {
+			return false;
+		}
+		return true;
     }
 
     private boolean checkHourlyRate(TextField hourlyRate) {
-    	double rate = Double.parseDouble(hourlyRate.getText());
-        if (rate < 0) {
-            return false;
-        }
-        return true;
+    	try {
+			double rate = Double.parseDouble(hourlyRate.getText());
+			if (rate < 0) {
+				messageArea.appendText("Pay rate cannot be negative.");
+				return false;
+			}
+		} catch (Exception ex) {
+			return false;
+		}
+		return true;
     }
 
     @FXML
