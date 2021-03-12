@@ -274,7 +274,7 @@ public class Controller {
     void printAllEmployees(ActionEvent event) {
     	if(numEmp > 0) {
     		messageAreaDB.appendText("--Printing earning statements for all employees--\n");
-        	messageAreaDB.appendText(company.print() + "\n"); // nida: did this bc i couldn't see the ouput, print() would have to return a string
+        	messageAreaDB.appendText(company.print()); // nida: did this bc i couldn't see the ouput, print() would have to return a string
     	}else {
     		messageAreaDB.appendText("Employee database is empty.\n");
     	}
@@ -284,7 +284,7 @@ public class Controller {
     void printByDate(ActionEvent event) {
     	if(numEmp > 0) {
     		messageAreaDB.appendText("--Printing earning statements by date hired--");
-        	company.printByDate(); // messageAreaDB.appendText(company.printByDate() + "\n");
+        	company.printByDate(); // messageAreaDB.appendText(company.printByDate());
     	}else {
     		messageAreaDB.appendText("Employee database is empty.\n");
     	}
@@ -294,7 +294,7 @@ public class Controller {
     void printByDept(ActionEvent event) {
     	if(numEmp > 0) {
     		messageAreaDB.appendText("--Printing earning statements by department--");
-        	company.printByDepartment(); // messageAreaDB.appendText(company.printByDepartment() + "\n");
+        	company.printByDepartment(); // messageAreaDB.appendText(company.printByDepartment());
     	}else {
     		messageAreaDB.appendText("Employee database is empty.\n");
     	}
