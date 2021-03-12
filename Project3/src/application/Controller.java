@@ -212,7 +212,8 @@ public class Controller {
     	hoursWorked.clear();
     	messageArea.clear();
     	dateHired.getEditor().clear();
-	// just need to clear the togglegroup ones ez
+	dept.getSelectedToggle().setSelected(false);
+    	empType.getSelectedToggle().setSelected(false);
     }
 
     @FXML
