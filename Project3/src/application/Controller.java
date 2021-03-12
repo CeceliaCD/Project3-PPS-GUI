@@ -178,27 +178,46 @@ public class Controller {
 
     @FXML
     void checkAnnualSalary(ActionEvent event) {
-
+	double salary = Double.parseDouble(annualSalary.getText());
+    	if (salary < 0) {
+    		messageArea.appendText("Salary cannot be negative.\n");
+    	}
     }
 
     @FXML
     void checkHourlyRate(ActionEvent event) {
-
+	double rate = Double.parseDouble(hourlyRate.getText());
+        if (rate < 0) {
+            messageArea.appendText("Pay rate cannot be negative.\n");
+        }
     }
 
     @FXML
     void checkHoursWorked(ActionEvent event) {
-
+	// note for nida: make sure all fields are in for sethours before setting the hours (didn't have date but it still worked)
+	int hours = Integer.parseInt(hoursWorked.getText());
+    	if (hours > 100) {
+    		messageArea.appendText("Invalid Hours: over 100.\n");
+    	}
+    	if (hours < 0) {
+    		messageArea.appendText("Working hours cannot be negative.\n");
+    	}
     }
 
     @FXML
     void clearFields(ActionEvent event) {
-
+	name.clear();
+    	annualSalary.clear();
+    	hourlyRate.clear();
+    	hoursWorked.clear();
+    	messageArea.clear();
+    	dateHired.getEditor().clear();
+	// just need to clear the togglegroup ones ez
     }
 
     @FXML
     void clearMessageArea(ActionEvent event) {
-
+	// is this needed if we can just clear it in clearfields?
     }
 
     @FXML
