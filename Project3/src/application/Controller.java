@@ -304,39 +304,12 @@ public class Controller {
     void removeEmployee(ActionEvent event) {
     	//R Doe,Jane CS 7/1/2020 find the employee with the same profile and remove it
     	try {
-    		RadioButton selectedType = (RadioButton) empType.getSelectedToggle();
-    		String groupValue = selectedType.getText();
-    		if(groupValue == null) {
-    			messageArea.appendText("Please select an employment type.\n");
-    		}
-    		
-    		if (groupValue.equals("Parttime")) {
-    			Parttime parttimer = new Parttime(inputtedEmpProfile(event), 0, 0, 0);
-        		if(company.remove(parttimer) == true) {
-        			messageArea.appendText("Employee removed.\n");
-        		}else {
-    	    		messageArea.appendText("Employee does not exist.\n");
-    	    	}
-    		}
-    		
-    		if (groupValue.equals("Fulltime")) {
-    			Fulltime fulltimer = new Fulltime(inputtedEmpProfile(event), 0, 0);
-        		if(company.remove(fulltimer) == true) {
-        			messageArea.appendText("Employee removed.\n");
-        		}else {
-    	    		messageArea.appendText("Employee does not exist.\n");
-    	    	}
-    		}
-    		
-    		if (groupValue.equals("Management")) {
-    			Management manager = new Management(inputtedEmpProfile(event), 0, 0, null); // right now the constructor takes an int for the role, should we change that?	
-    	    	if(company.remove(manager) == true) {
-    	    		messageArea.appendText("Employee removed.\n");
-    	    	}else {
-    	    		messageArea.appendText("Employee does not exist.\n");
-    	    	}
-    		}
-    		
+    		Employee emp = new Employee(inputtedEmpProfile(event), 0);
+    		if (company.remove(emp) == true) {
+    			messageArea.appendText("Employee removed.\n");
+    		} else {
+    			messageArea.appendText("Employee does not exist.\n");
+    		}	    		
     	}
     	catch(Exception e) {
     		return;
