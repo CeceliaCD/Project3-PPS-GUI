@@ -162,6 +162,7 @@ public class Company {
 	alphabetical order.
 	*/
 	public void printByDepartment() { //print earning statements by department 
+		StringBuilder builder = new StringBuilder();
 		if(numEmployee != 0) {
 			Employee tempEmpDept;
 			
@@ -199,10 +200,12 @@ public class Company {
 			for(int k=0; k < emplist.length; k++) {
 				if (emplist[k] != null) //print all the non-null elements of employee list
 				{
-					emplist[k].toString();
+					builder.append(emplist[k].toString() + "\n");
 				}	
 			}	
+			return builder.toString();
 		}
+		return "Employee database is empty.\n";
 	} 
 	
 	/**
@@ -210,6 +213,7 @@ public class Company {
 	employee was hired in ascending order.
 	*/
 	public void printByDate() { //print earning statements by date hired
+		StringBuilder builder = new StringBuilder();
 		if(numEmployee != 0) {
 			Employee tempEmployee;
 			
@@ -255,10 +259,12 @@ public class Company {
 			for(int j=0; j < emplist.length; j++) {
 				if (emplist[j] != null) //print all the non-null elements of employee list
 				{
-					emplist[j].toString();
+					builder.append(emplist[k].toString() + "\n");
 				}
 			}
+			return builder.toString();
 		}
+		return "Employee database is empty.\n";
 	}
 	
 	/*
