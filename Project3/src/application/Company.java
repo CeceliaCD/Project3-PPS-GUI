@@ -1,7 +1,7 @@
 package application;
 
-import java.io.File;
-import java.util.Scanner;
+import java.io.File; // unused import ?
+import java.util.Scanner; // unused import
 
 /**
 The company class is responsible for all the changes that
