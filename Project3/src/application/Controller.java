@@ -109,7 +109,7 @@ public class Controller {
     			Parttime parttimer;
     			try {
     				parttimer = new Parttime(inputtedEmpProfile(event), 0, 0, 0);
-    				parttimer.setHourlyRate(Integer.parseInt(hourlyRate.getText()));
+    				parttimer.setHourlyRate(Double.parseDouble(hourlyRate.getText()));
     			}
     			catch(Exception ex) {
     				messageArea.appendText("Invalid input!\n");
@@ -128,7 +128,7 @@ public class Controller {
     			Fulltime fulltimer; 
     			try {
     				fulltimer = new Fulltime(inputtedEmpProfile(event), 0, 0); 
-    				fulltimer.setAnnualSalary(Integer.parseInt(annualSalary.getText()));
+    				fulltimer.setAnnualSalary(Double.parseDouble(annualSalary.getText()));
     			}
     			catch(Exception ex) {
     				return;
@@ -148,7 +148,7 @@ public class Controller {
     			Management manager;
     			try {
     				manager = new Management(inputtedEmpProfile(event), 0, 0, role); // right now the constructor takes an int for the role, should we change that?
-    				manager.setAnnualSalary(Integer.parseInt(annualSalary.getText()));
+    				manager.setAnnualSalary(Double.parseDouble(annualSalary.getText()));
     			}
     			catch(Exception ex) {
     				return;
