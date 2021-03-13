@@ -13,6 +13,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+The controller class is responsible for the changes that happen in the
+graphical user interface. It takes in the information that is used to
+execute the methods in the company class, and outputs necessary results 
+and messages.
+@author Cecelia Chollette-Dickson, Nida Ansari
+*/
+
 public class Controller {
 
     @FXML
