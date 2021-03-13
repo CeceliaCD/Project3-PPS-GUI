@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
 The company class is responsible for all the changes that
 happens within the employee list. It contains helper methods
-as well as methods used to be called when a user inputs a command.
+as well as methods used to be called when a user executes a function.
 @author Ceceliachollette-Dickson, Nidaansari
 */
 public class Company {
@@ -141,7 +141,7 @@ public class Company {
 	
 	/**
  	This method is invoked to print the current state of the employee list.
- 	@return
+ 	@return string of all the necessary information related to all the employees in the list.
 	*/
 	public String print() { //print earning statements for all employees
 		StringBuilder builder = new StringBuilder();
@@ -161,7 +161,7 @@ public class Company {
 	/**
 	This method is invoked to print the employee list by department in 
 	alphabetical order.
-	@return
+	@return string of all the necessary information related to all the employees in the list sorted by department.
 	*/
 	public String printByDepartment() { //print earning statements by department 
 		StringBuilder builder = new StringBuilder();
@@ -213,7 +213,7 @@ public class Company {
 	/**
 	This method is invoked to print the employee list by the dates each 
 	employee was hired in ascending order.
-	@return
+	@return string of all the necessary information related to all the employees in the list sorted by date.
 	*/
 	public String printByDate() { //print earning statements by date hired
 		StringBuilder builder = new StringBuilder();
