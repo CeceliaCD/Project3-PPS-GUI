@@ -346,8 +346,8 @@ public class Controller {
     @FXML
     void removeEmployee(ActionEvent event) {
     	messageArea.clear();
-    	//R Doe,Jane CS 7/1/2020 find the employee with the same profile and remove it
     	try {
+		if (inputtedEmpProfile(event) != null) {
     		Employee emp = new Employee(inputtedEmpProfile(event), 0);
     		if (company.remove(emp) == true) {
     			messageArea.appendText("Employee removed.\n");
@@ -355,7 +355,10 @@ public class Controller {
     			messageArea.appendText("Employee does not exist.\n");
     		}	    		
     	}
-    	catch(Exception e) {
+		else {
+			return;
+		}
+	} catch(Exception e) {
     		return;
     	}
     }
