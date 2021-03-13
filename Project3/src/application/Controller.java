@@ -62,9 +62,10 @@ public class Controller {
     private int numEmp = 0;
     
     /**
-
-	@param
-    @return
+    This method creates a profile object which will be returned so an employee
+    of any type can be made.
+	@param profileEvent takes in the necessary information to create a profile.
+    @return the profile to be used when creating an employee.
     */
     private Profile inputtedEmpProfile(ActionEvent profileEvent) {
     	String newEmployee = name.getText();
@@ -74,7 +75,7 @@ public class Controller {
         }
         for(int i = 0; i < newEmployee.length(); i++) {
         	char ch = newEmployee.charAt(i);
-        	if(!Character.isLetter(ch) && ch != ',') {
+        	if(!Character.isLetter(ch) && ch != ' ') {
         		messageArea.appendText("Please enter valid input.\n");
             	return null;
         	}
@@ -115,8 +116,9 @@ public class Controller {
     }
     
     /**
-
-    @param
+    A helper method for importFile to help scan in the information to the 
+    text area.
+    @param employeeInfo contains the information of an employee.
     */
     private void importedEmployees(String[] employeeInfo) {
     	String employeeType = employeeInfo[0];
@@ -166,8 +168,9 @@ public class Controller {
     }
     
     /**
-
-    @param
+    Method to obtain the information needed for the add method in the company class,
+    and output any necessary messages.
+    @param event is the Add Employees button in View.fxml
     */
     @FXML
     void addEmployee(ActionEvent event) {
@@ -255,8 +258,8 @@ public class Controller {
     }
 
     /**
-
-    @param
+    This method calculates the payment for all employees in the database.
+    @param event is the Calculate Payment button in View.fxml
     */
     @FXML
     void calculatePayment(ActionEvent event) {
@@ -271,9 +274,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
-    @return
+	Method to check if the annual salary of a fulltime or manager employee is valid.
+	@param annualSalary contains a fulltime or manager employee's annual salary
+    @return boolean that signals if the salary was valid or not
     */
     private boolean checkAnnualSalary(TextField annualSalary) {
     	try {
@@ -290,9 +293,9 @@ public class Controller {
     }
     
     /**
-	
-	@param
-    @return
+	Method to check if the hourly rate of a part time employee is valid.
+	@param hourlyRate contains the rate of a part time employee in textfield format.
+    @return boolean that signals if the hourly rate is valid or not.
     */
     private boolean checkHourlyRate(TextField hourlyRate) {	
     	try {	
@@ -309,8 +312,8 @@ public class Controller {
     }
     
     /**
-	
-	@param
+	Clears out every input and output area and enables all disabled fields again.
+	@param event is the Clear button in the graphical user interface.
     */
     @FXML
     void clearFields(ActionEvent event) {
@@ -342,8 +345,8 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Clears the textarea for outputs in the Employee Database tab.
+	@param event is the Clear button in the Employee Database tab.
     */
     @FXML
     void clearMessageArea(ActionEvent event) {
@@ -351,8 +354,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Executes the necessary functions needed to export the file, and outputs any 
+	relevant messages related to the status of the export.
+	@param event is the Export button in the graphical user interface.
     */
     @FXML
     void exportFile(ActionEvent event) throws FileNotFoundException {
@@ -386,8 +390,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	This disables the fields that are not required for a full time employee, such
+	as hourly rate, hours worked, set hours, and managerial role.
+	@param event is the full time button in the graphical user interface.
     */
     @FXML
     void fulltime(ActionEvent event) {
@@ -403,8 +408,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Executes the necessary functions needed to import the file, and outputs any 
+	relevant messages related to the status of the import.
+	@param event is the Import button in the graphical user interface.
     */
     @FXML
     void importFile(ActionEvent event) throws FileNotFoundException {
@@ -446,8 +452,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	This disables the fields that are not required for a management employee, such
+	as hourly rate, hours worked, and set hours.
+	@param event is the management button in the graphical user interface.
     */
     @FXML
     void management(ActionEvent event) {
@@ -463,8 +470,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	This disables the fields that are not required for a part time employee, such
+	as annual salary and managerial role.
+	@param event is the parttime button in the grpahical user interface.
     */
     @FXML
     void parttime(ActionEvent event) {
@@ -480,8 +488,8 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Outputs a list of all the employees in the database and their relevant information.
+	@param event is the Print All Employees selection from the print drop down menu.
     */
     @FXML
     void printAllEmployees(ActionEvent event) {
@@ -496,8 +504,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Outputs a list of all the employees in the database and their relevant information
+	sorted by date.
+	@param event is the Print By Date selection from the print drop down menu.
     */
     @FXML
     void printByDate(ActionEvent event) {
@@ -512,8 +521,9 @@ public class Controller {
     }
     
     /**
-	
-	@param
+	Outputs a list of all the employees in the database and their relevant information
+	sorted by department.
+	@param event is the Print By Date selection from the print drop down menu.
     */
     @FXML
     void printByDept(ActionEvent event) {
@@ -528,8 +538,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Obtains the necessary information for the remove method in company to execute
+	successfully, and then output any relevant messages.
+	@param event is the Remove Employee button in the graphical user interface.
     */
     @FXML
     void removeEmployee(ActionEvent event) {
@@ -554,8 +565,9 @@ public class Controller {
     }
 
     /**
-	
-	@param
+	Obtains the necessary information for the setHours method in company to execute
+	successfully, and then output any relevant messages.
+	@param event is the Set Hours button in the graphical user interface.
     */
     @FXML
     void setHours(ActionEvent event) {
