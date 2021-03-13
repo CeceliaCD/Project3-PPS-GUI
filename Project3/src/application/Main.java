@@ -6,7 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
-
+/**
+The Main class is responsible for executing the program and to
+display the graphical user interface. This class will show the interface
+that was built in View.fxml.
+@author Ceceliachollette-Dickson, Nidaansari
+*/
 
 public class Main extends Application {
 	@Override
