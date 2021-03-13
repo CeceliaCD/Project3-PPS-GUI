@@ -356,6 +356,7 @@ public class Controller {
     /**
 	Executes the necessary functions needed to export the file, and outputs any 
 	relevant messages related to the status of the export.
+	@throws FileNotFoundException if file is not found
 	@param event is the Export button in the graphical user interface.
     */
     @FXML
@@ -410,6 +411,7 @@ public class Controller {
     /**
 	Executes the necessary functions needed to import the file, and outputs any 
 	relevant messages related to the status of the import.
+	@throws FileNotFoundException if file is not found
 	@param event is the Import button in the graphical user interface.
     */
     @FXML
