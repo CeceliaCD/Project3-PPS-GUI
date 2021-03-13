@@ -15,8 +15,9 @@ that was built in View.fxml.
 public class Main extends Application {
 	
 	/**
-
-	@param
+	Obtains all the information from the FXML file and executes it so the graphical user
+	interface can be shown.
+	@param primaryStage creates the window for the program to run on.
 	*/
 	@Override
 	public void start(Stage primaryStage) {
@@ -33,8 +34,8 @@ public class Main extends Application {
 	}
 	
 	/**
-
-	@param
+	Runs the payroll processing program.
+	@param args array of string arguments
 	*/
 	public static void main(String[] args) {
 		launch(args);
